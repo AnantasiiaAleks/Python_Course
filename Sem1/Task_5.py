@@ -14,7 +14,7 @@
 
 place = int(input('Витя сел в вагон номер: '))
 van = int(input('В вагоне написан номер: '))
-if place == van:
+if place != van:
     train = place + van - 1
     print(f'В поезде всего {train} вагонов.')
 else:
