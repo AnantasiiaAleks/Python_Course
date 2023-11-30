@@ -14,5 +14,8 @@
 
 place = int(input('Витя сел в вагон номер: '))
 van = int(input('В вагоне написан номер: '))
-train = place + van - 1
-print(f'В поезде всего {train} вагонов.')
+if place == van:
+    train = place + van - 1
+    print(f'В поезде всего {train} вагонов.')
+else:
+    print('Без дополнительной информации указать длину состава невозможно')
