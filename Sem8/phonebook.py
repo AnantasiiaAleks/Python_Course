@@ -61,22 +61,19 @@ def search_contact():
             print(contact_str)
 
 def contact_copy():
-    with open('phonebook.txt', 'r', encoding='UTF-8') as file:
-        contacts_list = file.read().rstrip().split('\n\n')
-        print(contacts_list)
 
     show_info()
+
+    with open('phonebook.txt', 'r', encoding='UTF-8') as file:
+        contacts_list = file.read().rstrip().split('\n\n')
 
     print('Какой контакт будем копировать?')
     number_contact_for_copy = int(input('Выберите номер записи: '))
 
     index_contact = number_contact_for_copy - 1
 
-    for index in range(len([contacts_list])):
-        if index == index_contact:
-            # print(contacts_list[index])
-            with open('copy_of_phonebook.txt', 'a', encoding='UTF-8') as file:
-                file.write(f'{contacts_list[index]}\n\n')
+    with open('copy_of_phonebook.txt', 'a', encoding='UTF-8') as file:
+        file.write(f'{contacts_list[index_contact]}\n\n')
 
 
 def interface():
