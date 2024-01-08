@@ -60,20 +60,40 @@ def search_contact():
         if search in contact_lst[index_var]:
             print(contact_str)
 
+def contact_copy():
+    with open('phonebook.txt', 'r', encoding='UTF-8') as file:
+        contacts_list = file.read().rstrip().split('\n\n')
+        print(contacts_list)
+
+    show_info()
+
+    print('Какой контакт будем копировать?')
+    number_contact_for_copy = int(input('Выберите номер записи: '))
+
+    index_contact = number_contact_for_copy - 1
+
+    for index in range(len([contacts_list])):
+        if index == index_contact:
+            # print(contacts_list[index])
+            with open('copy_of_phonebook.txt', 'a', encoding='UTF-8') as file:
+                file.write(f'{contacts_list[index]}\n\n')
+
+
 def interface():
     with open('phonebook.txt', 'a', encoding='UTF-8'):
         pass
     command = '-1'
-    while command != '4':
+    while command != '5':
         print('Возможные варианты взаимодействия:\n'
               '1. Добавить контакт\n'
               '2. Вывести на экран\n'
               '3. Поиск контакта\n'
-              '4. Выход')
+              '4. Копирование контакта\n'
+              '5. Выход')
         print()
         command = input('Введите номер команды: ')
 
-        while command not in ('1', '2', '3', '4'):
+        while command not in ('1', '2', '3', '4', '5'):
             print('Некорректный ввод')
             command = input('Введите номер команды: ')
 
@@ -85,6 +105,8 @@ def interface():
             case '3':
                 search_contact()
             case '4':
+                contact_copy()
+            case '5':
                 print('Спасибо за работу!')
 
 interface()
